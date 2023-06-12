@@ -85,7 +85,7 @@ header .mobile-header-menu {
 }
 header .mobile-header-menu.mobile-header-menu-active {
   opacity: 1;
-  margin-top: 20px;
+ 
   pointer-events: all;
   transform: translateY(0) translateZ(0) scale(1, 1);
 }
@@ -244,6 +244,14 @@ tr {
   flex-direction: row;
   gap: 15px;
   align-items: center;
+}
+@media only screen and (max-width: 600px) {
+  .trigger {
+    margin-top: 35px;
+  }
+  .main-table-kayit{
+    justify-content: center;
+  }
 }
 
 .dataTables_filter {

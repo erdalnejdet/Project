@@ -67,33 +67,60 @@ window.onload = function() {
     }
   }
   
-  // Yeni kayıt ekle
-  function ekleKayit() {
-    event.preventDefault();
-    var social = document.getElementById("social").value;
-    var name = document.getElementById("name").value;
-    var explanation = document.getElementById("explanation").value;
-  
-    if (social === "" || name === "" || explanation === "") {
-      alert("Lütfen boş bırakmayınız!");
-      return;
-    }
-  
-    var kayit = {
-      social: social,
-      name: name,
-      explanation: explanation
-    };
-  
-    addKayitRow(kayit);
-    saveKayitData(kayit);
-  
-    // Input alanlarını temizle
+// Yeni kayıt ekle
+function ekleKayit() {
+  event.preventDefault();
+  var social = document.getElementById("social").value;
+  var name = document.getElementById("name").value;
+  var explanation = document.getElementById("explanation").value;
+
+  if (social === "" || name === "" || explanation === "") {
+    alert("Lütfen boş bırakmayınız!");
+    return;
+  }
+
+  var kayit = {
+    social: social,
+    name: name,
+    explanation: explanation
+  };
+
+  if (kayitVarMi(kayit)) {
+    alert("Bu kayıt zaten mevcut!");
     document.getElementById("social").value = "";
     document.getElementById("name").value = "";
     document.getElementById("explanation").value = "";
+    return;
   }
-  
+
+  addKayitRow(kayit);
+  saveKayitData(kayit);
+
+  // Input alanlarını temizle
+  document.getElementById("social").value = "";
+  document.getElementById("name").value = "";
+  document.getElementById("explanation").value = "";
+}
+
+// Kayıtları kontrol et
+function kayitVarMi(kayit) {
+  var savedData = localStorage.getItem("kayitlar");
+  if (savedData) {
+    var kayitlar = JSON.parse(savedData);
+    for (var i = 0; i < kayitlar.length; i++) {
+      if (
+        kayitlar[i].social === kayit.social &&
+        kayitlar[i].name === kayit.name &&
+        kayitlar[i].explanation === kayit.explanation
+      )
+      {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
   // Yeni kayıt satırını tabloya ekle
   function addKayitRow(kayit) {
     var table = $('#case').DataTable();
