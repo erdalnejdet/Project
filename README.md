@@ -8,14 +8,10 @@ Projenin düzgün çalışabilmesi için aşağıdaki adımları izleyin:
 
 1. İlk olarak, projeyi çalıştırabilmek için Node.js ve npm'in yüklü olması gerekmektedir. Node.js'in 14.18.1 sürümünün yüklü olduğundan emin olun.
 2. Projenin ana dizininde, terminali açın ve aşağıdaki komutu çalıştırın:
-3. 
+3-npm install yazın 
 Bu komut, projenin bağımlılıklarını yükleyecektir.
 3. Kurulum tamamlandıktan sonra, aşağıdaki komutu çalıştırarak projeyi başlatın:
-
-npm install
-
-gulp yazarak calıştırabilirsiniz.
-
+4- gulp yazarak calıştırabilirsiniz.
 
 ## Kullanım
 Proje başarıyla başlatıldıktan sonra, kullanıcı bilgilerini kaydetmek için aşağıdaki adımları izleyebilirsiniz:

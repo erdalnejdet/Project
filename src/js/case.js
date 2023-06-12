@@ -34,7 +34,7 @@ function preventDefaultSubmit(event) {
   if (confirm("Emin misiniz?")) {
     toggleModal();
   } else {
-    // Kapatma işlemi gerçekleştirme
+    
   }
 }
 
