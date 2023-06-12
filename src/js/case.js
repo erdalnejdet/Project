@@ -18,17 +18,6 @@ function toggleModal() {
   modal.classList.toggle("show-modal");
 }
 
-function windowOnClick(event) {
-  if (event.target === modal || event.target === document.body) {
-    event.preventDefault();
-    if (confirm("Emin misiniz?")) {
-      toggleModal();
-    }
-  }
-}
-
-
-
 function preventDefaultSubmit(event) {
   event.preventDefault();
   if (confirm("Emin misiniz?")) {
@@ -37,6 +26,7 @@ function preventDefaultSubmit(event) {
     
   }
 }
+// pop-up vazgeç butonuna tıklandıgında emin misin yazısı cıkıyor sonra  evet derse kapatıyor
 
 trigger.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
@@ -49,6 +39,8 @@ const savebutton = document.querySelector(".save");
 
 savebutton.addEventListener("click",function(e){
   ekleKayit();
+
+  //butona tıkaldıgında ekle kayit fonksiyonunu cağırıyor
 
 
 });
@@ -75,17 +67,22 @@ function ekleKayit() {
   var social = document.getElementById("social").value;
   var name = document.getElementById("name").value;
   var explanation = document.getElementById("explanation").value;
+  //burada kayıt eklendikten sonra inputları temizledik
 
   if (social === "" || name === "" || explanation === "") {
     alert("Lütfen boş bırakmayınız!");
     return;
   }
+    //burada kayıt eklerken alanları boş bırakılmasını kontrol ettik
 
   var kayit = {
     social: social,
     name: name,
     explanation: explanation
+      //burada nesne oluşturduk
   };
+
+
 
   if (kayitVarMi(kayit)) {
     alert("Bu kayıt zaten mevcut!");
@@ -94,6 +91,7 @@ function ekleKayit() {
     document.getElementById("explanation").value = "";
     return;
   }
+    //burada kayıt eklendikten  sonra aynı kayıt eklenemiyor kullanıcı adı kişiye özel oldugu için böyle bir kontrol yaptım
 
   addKayitRow(kayit);
   saveKayitData(kayit);
@@ -128,7 +126,7 @@ return false;
 // Yeni kayıt satırını tabloya ekle
 function addKayitRow(kayit) {
   var table = $('#case').DataTable();
-  table.row.add([kayit.social, kayit.name, kayit.explanation]).draw();
+  table.row.add([kayit.social, kayit.name, kayit.explanation]).draw();  
 }
 
 // Kayıt verilerini yerel depolamaya kaydet
